@@ -1,5 +1,5 @@
 /*
-Copyright 2019 The Tekton Authors
+Copyright 2022 The Tekton Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,9 +17,11 @@ limitations under the License.
 package pipeline
 
 const (
-	// ArtifactStorageBucketType holds the name of the PipelineResource type for a bucket
-	ArtifactStorageBucketType = "bucket"
+	// ReservedResultsSidecarName is the name of the results sidecar that outputs the results to stdout
+	// when the results-from feature-flag is set to "sidecar-logs".
+	ReservedResultsSidecarName = "tekton-log-results"
 
-	// ArtifactStoragePVCType holds the name of the PipelineResource type for a pvc
-	ArtifactStoragePVCType = "pvc"
+	// ReservedResultsSidecarContainerName is the name of the results sidecar container that is injected
+	// by the reconciler.
+	ReservedResultsSidecarContainerName = "sidecar-tekton-log-results"
 )

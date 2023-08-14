@@ -9,7 +9,7 @@ import (
 	libhandler "github.com/operator-framework/operator-lib/handler"
 	promv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
 	"github.com/prometheus/client_golang/prometheus"
-	tekton "github.com/tektoncd/pipeline/pkg/apis/pipeline/v1beta1"
+	tekton "github.com/tektoncd/pipeline/pkg/apis/pipeline/v1"
 	apps "k8s.io/api/apps/v1"
 	core "k8s.io/api/core/v1"
 	rbac "k8s.io/api/rbac/v1"

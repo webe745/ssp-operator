@@ -1,5 +1,5 @@
 /*
-Copyright 2019 The Knative Authors
+Copyright 2023 The Tekton Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,10 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Api versions allow the api contract for a resource to be changed while keeping
-// backward compatibility by support multiple concurrent versions
-// of the same resource
+package pipeline
 
-// +k8s:deepcopy-gen=package
-// +groupName=duck.knative.dev
-package v1beta1
+const (
+	// TektonReservedAnnotationExpr is the expression we use to filter out reserved key in annotation
+	TektonReservedAnnotationExpr = "(results.tekton.dev|chains.tekton.dev)/.*"
+)

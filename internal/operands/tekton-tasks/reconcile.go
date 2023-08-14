@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	pipeline "github.com/tektoncd/pipeline/pkg/apis/pipeline/v1beta1"
+	pipeline "github.com/tektoncd/pipeline/pkg/apis/pipeline/v1"
 	v1 "k8s.io/api/core/v1"
 	rbac "k8s.io/api/rbac/v1"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -198,31 +198,7 @@ func (t *tektonTasks) Cleanup(request *common.Request) ([]common.CleanupResult, 
 		objects = append(objects, o)
 	}
 
-	if request.CrdList.CrdExists(tektonCrd) {
-		clusterTasks, err := listDeprecatedClusterTasks(request)
-		if err != nil {
-			return nil, err
-		}
-		for _, ct := range clusterTasks {
-			o := ct.DeepCopy()
-			objects = append(objects, o)
-		}
-	}
-
 	return common.DeleteAll(request, objects...)
-}
-
-// Note: ClusterTasks are deprecated and replaced by Tasks [1].
-// [1] https://tekton.dev/docs/pipelines/tasks/#task-vs-clustertask
-func listDeprecatedClusterTasks(request *common.Request) ([]pipeline.ClusterTask, error) {
-	deprecatedClusterTasks := &pipeline.ClusterTaskList{}
-	err := request.Client.List(request.Context, deprecatedClusterTasks, &client.MatchingLabels{
-		common.AppKubernetesManagedByLabel: common.TektonAppKubernetesManagedByValue,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return deprecatedClusterTasks.Items, nil
 }
 
 func isUpgradingNow(request *common.Request) bool {
