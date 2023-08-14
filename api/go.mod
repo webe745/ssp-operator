@@ -18,8 +18,8 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/openshift/custom-resource-status v1.1.2 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/text v0.7.0 // indirect
+	golang.org/x/net v0.10.0 // indirect
+	golang.org/x/text v0.11.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	k8s.io/api v0.26.2 // indirect
@@ -28,3 +28,5 @@ require (
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 )
+
+replace golang.org/x/net => golang.org/x/net v0.13.0
