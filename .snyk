@@ -2,6 +2,6 @@
 
 exclude:
     global:
-      - vendor
-      - tests
-      - api/vendor
+      - vendor/**
+      - tests/**
+      - api/vendor/**
